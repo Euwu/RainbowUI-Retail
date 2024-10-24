@@ -236,7 +236,7 @@ end
 
 StaticPopupDialogs["TidyPlatesEnabled"] = {
   preferredIndex = STATICPOPUP_NUMDIALOGS,
-  text = "|cffFFA500" .. t.Meta("title") .. L[" Warning|r \n---------------------------------------\n"] ..
+  text = "|cffFFA500" .. t.Meta("title") .. " Warning|r \n---------------------------------------\n" ..
     L["|cff89F559Threat Plates|r is no longer a theme of |cff89F559TidyPlates|r, but a standalone addon that does no longer require TidyPlates. Please disable one of these, otherwise two overlapping nameplates will be shown for units."],
   button1 = OKAY,
   timeout = 0,
@@ -247,7 +247,7 @@ StaticPopupDialogs["TidyPlatesEnabled"] = {
 
 StaticPopupDialogs["IncompatibleAddon"] = {
   preferredIndex = STATICPOPUP_NUMDIALOGS,
-  text = "|cffFFA500" .. t.Meta("title") .. L[" Warning|r \n---------------------------------------\n"] ..
+  text = "|cffFFA500" .. t.Meta("title") .. " Warning|r \n---------------------------------------\n" ..
     L["You currently have two nameplate addons enabled: |cff89F559Threat Plates|r and |cff89F559%s|r. Please disable one of these, otherwise two overlapping nameplates will be shown for units."],
   button1 = OKAY,
   button2 = L["Don't Ask Again"],

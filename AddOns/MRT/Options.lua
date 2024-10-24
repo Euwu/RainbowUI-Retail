@@ -142,13 +142,13 @@ function MRT.Options:AddIcon(moduleName,icon)
 	end
 end
 
-local OptionsFrame = MRT.Options:Add("Method Raid Tools","|cffffa800"..L.addonname.."|r")
+local OptionsFrame = MRT.Options:Add("Method Raid Tools","|cffffa800Method Raid Tools|r")
 Options.modulesList:SetListValue(1)
 Options.modulesList.selected = 1
 Options.modulesList:Update()
 
 ------------------------------------------------------------
---[[ 不顯示選項
+
 MRT.Options.InBlizzardInterface = CreateFrame( "Frame", nil )
 MRT.Options.InBlizzardInterface.name = "Method Raid Tools"
 if SettingsPanel then
@@ -185,7 +185,7 @@ MRT.Options.InBlizzardInterface.button = ELib:Button(MRT.Options.InBlizzardInter
 	end
 	MRT.Options:Open()
 end)
---]]
+
 ------------------------------------------------------------
 
 Options.scale = ELib:Slider(Options):_Size(70,8):Point("TOPRIGHT",-45,-5):Range(50,200,true):OnShow(function(self)
@@ -252,7 +252,7 @@ MiniMapIcon.border:SetAllPoints()
 MiniMapIcon:RegisterForClicks("anyUp")
 MiniMapIcon:SetScript("OnEnter",function(self) 
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT") 
-	GameTooltip:AddLine(L.addonname) 
+	GameTooltip:AddLine("Method Raid Tools") 
 	GameTooltip:AddLine(L.minimaptooltiplmp,1,1,1) 
 	GameTooltip:AddLine(L.minimaptooltiprmp,1,1,1) 
 	GameTooltip:Show() 

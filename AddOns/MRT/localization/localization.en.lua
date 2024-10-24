@@ -7,9 +7,6 @@ end
 local L = ExRT.L
 local PH = ExRT.L --> Promt, Need retranslate
 
-L.addonname = "Method Raid Tools"
-L.openoptionframe = "Open Method Raid Tools"
-L.optionframename = "Method Raid Tools"
 L.message = "Note"
 L.marks = "Marks"
 L.bossmods = "Bossmods"

@@ -21,7 +21,7 @@ local HEX2RGB = ThreatPlates.HEX2RGB
 -- Global contstants
 ---------------------------------------------------------------------------------------------------
 
-ThreatPlates.ADDON_NAME = L["Threat Plates"]
+ThreatPlates.ADDON_NAME = "Threat Plates"
 
 Addon.ADDON_DIRECTORY = "Interface\\AddOns\\TidyPlates_ThreatPlates\\"
 
@@ -104,9 +104,9 @@ ThreatPlates.AlignH = {LEFT = L["Left"], CENTER = L["Center"], RIGHT = L["Right"
 ThreatPlates.AlignV = {BOTTOM = L["Bottom"], MIDDLE = L["Middle"], TOP = L["Top"]}
 
 ThreatPlates.AUTOMATION = {
-  NONE = L["No Automation"],
-  SHOW_COMBAT = L["Show during Combat, Hide when Combat ends"],
-  HIDE_COMBAT = L["Hide when Combat starts, Show when Combat ends"],
+  NONE = "No Automation",
+  SHOW_COMBAT = "Show during Combat, Hide when Combat ends",
+  HIDE_COMBAT = "Hide when Combat starts, Show when Combat ends",
 }
 
 Addon.GLOW_TYPES = {
@@ -551,18 +551,18 @@ ThreatPlates.DEFAULT_SETTINGS = {
     HostileClassIcon = true,
     cacheClass = false,
     optionRoleDetectionAutomatic = true, -- old default: false,
-    ShowThreatGlowOnAttackedUnitsOnly = false,
+    ShowThreatGlowOnAttackedUnitsOnly = true,
     ShowThreatGlowOffTank = true,
     NamePlateEnemyClickThrough = false,
-    NamePlateFriendlyClickThrough = true,
+    NamePlateFriendlyClickThrough = false,
     ShowFriendlyBlizzardNameplates = false,
     ShowEnemyBlizzardNameplates = false,
     Automation = {
       FriendlyUnits = "NONE",
       EnemyUnits = "NONE",
       -- SmallPlatesInInstances = false, -- Removed in 10.1.7
-      HideFriendlyUnitsInInstances = true,
-	  ShowFriendlyUnitsInInstances = false,
+      HideFriendlyUnitsInInstances = false,
+      ShowFriendlyUnitsInInstances = false,
     },
     Scale = {
       IgnoreUIScale = true,
@@ -571,7 +571,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
     HeadlineView = {
       -- ON = false, -- removed in 9.1.0
       name = {
-        size = 12,
+        size = 10,
         -- width = 140, -- same as for healthbar view -- old default: 116,
         -- height = 14, -- same as for healthbar view
         x = 0,
@@ -580,26 +580,26 @@ ThreatPlates.DEFAULT_SETTINGS = {
         vertical = "MIDDLE",
       },
       customtext = {
-        size = 9,
+        size = 8,
         -- shadow = true,  -- never used
         -- flags = "", -- never used
         -- width = 140,    -- never used, same as for healthbar view
         -- height = 14,    -- never used, same as for healthbar view
         x = 0,
-        y = -8,
+        y = -6,
         align = "CENTER",
         vertical = "MIDDLE",
       },
-      useAlpha = true,
+      useAlpha = false,
       -- blizzFading = true, -- removed in 8.5.1
       -- blizzFadingAlpha = 1, -- removed in 8.5.1
-      useScaling = true,
+      useScaling = false,
       ShowTargetHighlight = true,
       ShowFocusHighlight = true,
       ShowMouseoverHighlight = true,
       ForceHealthbarOnTarget = false,
-      ForceOutOfCombat = true,
-      ForceNonAttackableUnits = true,
+      ForceOutOfCombat = false,
+      ForceNonAttackableUnits = false,
       ForceFriendlyInCombat = "NONE",
       --
       EnemyTextColorMode = "CLASS",
@@ -611,7 +611,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
       SubtextColorUseSpecific = true,
       SubtextColor =  RGB(255, 255, 255, 1),
       --
-      EnemySubtext = "ROLE_GUILD",
+      EnemySubtext = "ROLE_GUILD_LEVEL",
       EnemySubtextCustom = "",
       FriendlySubtext = "ROLE_GUILD",
       FriendlySubtextCustom = "",
@@ -620,13 +620,13 @@ ThreatPlates.DEFAULT_SETTINGS = {
       --				showNameplates = true,
       --				showHostileUnits = true,
       --				showFriendlyUnits = false,
-      FriendlyPlayer = { Show = true, UseHeadlineView = true },
-      FriendlyNPC = { Show = "nameplateShowFriendlyNPCs", UseHeadlineView = true },
+      FriendlyPlayer = { Show = true, UseHeadlineView = false },
+      FriendlyNPC = { Show = "nameplateShowFriendlyNPCs", UseHeadlineView = false },
       FriendlyMinion = { Show = "nameplateShowFriendlyMinions",  },
-      FriendlyPet = { Show = "nameplateShowFriendlyPets", UseHeadlineView = true },
-      FriendlyGuardian = { Show = "nameplateShowFriendlyGuardians", UseHeadlineView = true },
-      FriendlyTotem = { Show = "nameplateShowFriendlyTotems", UseHeadlineView = true },
-      FriendlyMinus = { Show = true, UseHeadlineView = true },
+      FriendlyPet = { Show = "nameplateShowFriendlyPets", UseHeadlineView = false },
+      FriendlyGuardian = { Show = "nameplateShowFriendlyGuardians", UseHeadlineView = false },
+      FriendlyTotem = { Show = "nameplateShowFriendlyTotems", UseHeadlineView = false },
+      FriendlyMinus = { Show = true, UseHeadlineView = false },
       EnemyPlayer = { Show = true, UseHeadlineView = false },
       EnemyNPC = { Show = true, UseHeadlineView = false },
       EnemyMinion = { Show = "nameplateShowEnemyMinions", },
@@ -688,7 +688,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
       UnfriendlyFaction = RGB(255, 153, 51, 1),  -- brown/orange for unfriendly, hostile, non-attackable units (unit reaction = 3)
       FriendlyPlayerPvPOn = RGB(0, 255, 0),              -- green - Same faction, PVP flagged
       HostilePlayerPvPOnSelfPvPOff = RGB(255, 255, 0),   -- yellow - Opposite faction, they are PVP flagged but you are NOT PVP flagged so they can't attack you. You can attack them, though. (Which will immediately flag you)
-	  IgnorePvPStatus = false,
+      IgnorePvPStatus = false,
     },
     Colors = {
       Classes = GetDefaultColorsForClasses()
@@ -700,7 +700,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
       max = false,
       deficit = false,
       truncate = true,
-      LocalizedUnitSymbol = true,
+      LocalizedUnitSymbol = false,
       -- Absorbs
       AbsorbsAmount = false,
       AbsorbsShorten = true,
@@ -806,7 +806,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
       FrameOrder = "HEALTHBAR_AURAS",
       -- SwitchScaleByReaction = false, -- TODO: Remove or implement this feature
       SwitchAreaByReaction = true,
-      FlashWhenExpiring = true,
+      FlashWhenExpiring = false,
       FlashTime = 5,
       Debuffs = {
         ShowFriendly = false,
@@ -847,8 +847,8 @@ ThreatPlates.DEFAULT_SETTINGS = {
         },
         -- Also update debuff settings for square/wide in AURA_STYLE Options.lua
         ModeIcon = {
-          Style = "wide",
-          IconWidth = 26.5,
+          Style = "square",
+          IconWidth = 16.5,
           IconHeight = 14.5,
           ShowBorder = true,
           Columns = 5,
@@ -863,7 +863,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
             VerticalOffset = 6,
             Font = {
               Typeface = Addon.DEFAULT_SMALL_FONT,
-              Size = 12,
+              Size = 10,
               Transparency = 1,
               Color = RGB(255, 255, 255),
               flags = "OUTLINE",
@@ -965,7 +965,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
         ShowMagic = false,
         ShowUnlimitedAlways = false,
         ShowUnlimitedInCombat = true,
-        ShowUnlimitedInInstances = false,
+        ShowUnlimitedInInstances = true,
         ShowUnlimitedOnBosses = true,
         HideUnlimitedDuration = false,
         FilterMode = "Block",
@@ -1112,13 +1112,13 @@ ThreatPlates.DEFAULT_SETTINGS = {
         HealthbarMode = {
           Anchor = "RIGHT",
           InsideAnchor = false,
-          HorizontalOffset = 2,
+          HorizontalOffset = 10,
           VerticalOffset = 0,
         },
         NameMode = {
           Anchor = "RIGHT",
           InsideAnchor = false,
-          HorizontalOffset = 2,
+          HorizontalOffset = 10,
           VerticalOffset = 0,
         },
         -- Also update debuff settings for square/wide in AURA_STYLE Options.lua
@@ -1154,7 +1154,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
             HorizontalOffset = 0,
             VerticalOffset = -4,
             Font = {
-              Typeface = Addon.DEFAULT_SMALL_FONT,
+              Typeface = Addon.DEFAULT_DEFAULT_SMALL_FONTFONT,
               Size = 10,
               Transparency = 1,
               Color = RGB(255, 255, 255),
@@ -1240,7 +1240,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
       anchor = "CENTER"
     },
     classWidget = {
-      ON = false,
+      ON = true,
       scale = 22,
       x = -76,
       y = -7,
@@ -1294,7 +1294,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
     },
     FocusWidget = {
       ON = true,
-      theme = "arrow_less_than",
+      theme = "arrow_down",
       r = 0,
       g = 0.8,
       b = 0.8,
@@ -1307,7 +1307,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
       VerticalOffset = 12,
     },
     threatWidget = {
-      ON = (WOW_PROJECT_ID == WOW_PROJECT_CLASSIC and true or false),
+      ON = false,
       x = 0,
       y = 26,
       anchor = "CENTER",
@@ -1317,19 +1317,19 @@ ThreatPlates.DEFAULT_SETTINGS = {
         Type = "SCALED_PERCENTAGE",
         SecondPlayersName = true,
         ShowAlways = false,
-        ShowInGroups = (WOW_PROJECT_ID == WOW_PROJECT_CLASSIC and true or false),
-        ShowWithPet = (WOW_PROJECT_ID == WOW_PROJECT_CLASSIC and true or false),
-		-- Layout
+        ShowInGroups = true,
+        ShowWithPet = true,
+        -- Layout
         Anchor = "LEFT",
         InsideAnchor = false,
         HorizontalOffset = -6,
         VerticalOffset = 0,
         Font = {
           Typeface = Addon.DEFAULT_FONT,
-          Size = 14,
+          Size = 9,
           Transparency = 1,
           --Color = RGB(255, 255, 255),
-          flags = "OUTLINE",
+          flags = "",
           Shadow = true,
           HorizontalAlignment = "RIGHT",
           VerticalAlignment = "MIDDLE",
@@ -1344,7 +1344,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
       anchor = "CENTER",
     },
     ComboPoints = {
-      ON = true,
+      ON = false,
       ShowInHeadlineView = false,
       Style = "Orbs",
       HorizontalSpacing = 0,
@@ -1389,7 +1389,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
           [5] = RGB(66, 151, 216),
           [6] = RGB(66, 151, 216),
         },
-		MAGE = {
+        MAGE = {
           [1] = RGB(105, 204, 240),
           [2] = RGB(105, 204, 240),
           [3] = RGB(105, 204, 240),
@@ -1453,16 +1453,16 @@ ThreatPlates.DEFAULT_SETTINGS = {
       },
     },
     socialWidget = {
-      ON = true,
+      ON = false,
       scale = 16,
       x = 65,
       y = 6,
       x_hv = 65,
       y_hv = 6,
       --anchor = "Top",
-      ShowInHeadlineView = true,
+      ShowInHeadlineView = false,
       ShowFriendIcon = true,
-      ShowFactionIcon = false,
+      ShowFactionIcon = true,
       ShowFriendColor = false,
       FriendColor = RGB(29, 39, 61),      -- Blizzard friend dark blue, color for healthbars of friends
       ShowGuildmateColor = false,
@@ -1478,7 +1478,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
       --anchor = "Top",
     },
     questWidget = {
-      ON = false, -- old default: false
+      ON = true, -- old default: false
       scale = 26,
       x = 0,
       y = 30,
@@ -1510,7 +1510,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
       ShowInHeadlineView = false,
     },
     ResourceWidget  = {
-      ON = true,
+      ON = false,
       --ShowInHeadlineView = false,
       --scale = 28,
       x = 0,
@@ -1546,7 +1546,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
       y = 66,
       x_hv = 0,
       y_hv = 40,
-      scale = 30,
+      scale = 40,
       AuraSpacing = 4,
       Font = Addon.DEFAULT_FONT,
       FontSize = 24,
@@ -1642,7 +1642,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
     BlizzardSettings = {
       Names = {
         ShowOnlyNames = false,
-		Enabled = false,
+        Enabled = false,
         ShowPlayersInInstances = false,
         Font = {
           Typeface = Addon.DEFAULT_FONT,
@@ -1662,7 +1662,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
         VerticalOffset = -6,
       }
     },
-	totemSettings = GetDefaultTotemSettings(),
+    totemSettings = GetDefaultTotemSettings(),
     uniqueSettings = {
       ["**"] = {
         Name = "",
@@ -1742,76 +1742,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
           },
         }
       },
-	  {
-		Trigger = {
-		  Type = "Name",
-          Name = {
-            Input = "炸藥",
-            AsArray = {"炸藥",},
-          },
-        },
-		Enable = {
-		  UnitReaction = {
-		    FRIENDLY = false,
-		  },
-		  OutOfInstances = false,
-		},
-		name = "炸藥",
-		showIcon = false,
-		useColor = false,
-		overrideAlpha = false,
-		scale = 1.5,
-	  },
-	  {
-		scale = 1.2,
-		showIcon = false,
-		useColor = true,
-		Trigger = {
-		  Type = "Aura",
-		  Name = {
-		    Input = "",
-		  },
-		  Aura = {
-		    Input = "狂怒;激勵",
-			AsArray = {
-				"狂怒",
-				"激勵",
-			},
-		  },
-		},
-		overrideAlpha = true,
-		color = {
-		  g = 0.5019607843137255,
-		  b = 0,
-		},
-		Enable = {
-		  UnitReaction = {
-			FRIENDLY = false,
-		  },
-		},
-		allowMarked = false,
-	  },
-	  {
-		Trigger = {
-		  Type = "Name",
-          Name = {
-            Input = "幻影複製體",
-            AsArray = {"幻影複製體",},
-          },
-        },
-		Enable = {
-		  UnitReaction = {
-		    FRIENDLY = false,
-		  },
-		  OutOfInstances = false,
-		},
-		name = "幻影複製體",
-		showIcon = false,
-		useColor = false,
-		overrideAlpha = true,
-		scale = 0.7,
-	  },
-	},
+    },
     CVarsBackup = {}, -- Backup for CVars that should be restored when TP is disabled
     settings = {
       frame = {
@@ -1842,10 +1773,10 @@ ThreatPlates.DEFAULT_SETTINGS = {
         show = true,
       },
       healthbar = {
-        width = 100,
-        height = 8,
-        widthFriend = 100,
-        heightFriend = 8,
+        width = 120,
+        height = 10,
+        widthFriend = 120,
+        heightFriend = 10,
         texture = "Smooth", -- old default: "ThreatPlatesBar",
         backdrop = "Smooth", -- old default: "ThreatPlatesEmpty",
         BackgroundUseForegroundColor = false,
@@ -1865,7 +1796,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
           ShowOnlyForTarget = false,
           ShowNotMyself = true,
           ShowBrackets = true,
-		  -- Layout
+          -- Layout
           Anchor = "RIGHT",
           InsideAnchor = false,
           HorizontalOffset = 30,
@@ -1888,7 +1819,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
       castnostop = {
         show = true, -- no longer used
         ShowOverlay = true,
-        ShowInterruptShield = true,
+        ShowInterruptShield = false,
       },
       castborder = {
         texture = "TP_Castbar_Border_Thin", -- old default: "TP_CastBarOverlay",
@@ -1897,17 +1828,17 @@ ThreatPlates.DEFAULT_SETTINGS = {
         show = true,
       },
       castbar = {
-        width = 104,
-        height = 8,
+        width = 120,
+        height = 10,
         texture = "Smooth", -- old default: "ThreatPlatesBar",
         backdrop = "Smooth",
         BackgroundUseForegroundColor = false,
-        BackgroundOpacity = 0.3,
+        BackgroundOpacity = 0.7,
         BackgroundColor = RGB(0, 0, 0),
         x = 0,
-        y = 14,
+        y = -15,
         x_hv = 0,
-        y_hv = 14,
+        y_hv = -20,
         x_target = 0,
         y_target = 0,
         show = true,
@@ -1915,7 +1846,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
         ShowSpark = true,
         ShowCastTime = true,
         SpellNameText = {
-          HorizontalOffset = 8,
+          HorizontalOffset = 2,
           VerticalOffset = 0,
         },
         CastTimeText = {
@@ -1926,7 +1857,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
             VerticalAlignment = "MIDDLE",
           },
         },
-        FrameOrder = "CastbarOverHealthbar",
+        FrameOrder = "HealthbarOverCastbar",
         CastTarget = {
           Show = true,
           Anchor = "BOTTOM",
@@ -1951,7 +1882,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
       name = { -- Names for Healthbar View
         show = true,
         typeface = Addon.DEFAULT_FONT, -- old default: "Accidental Presidency",
-        size = 12, -- old default: 14
+        size = 10, -- old default: 14
         shadow = true,
         flags = "",
         width = 140, -- old default: 116,
@@ -1962,7 +1893,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
         vertical = "MIDDLE",
         ShowTitle = false,
         ShowRealm = false,
-		--
+        --
         EnemyTextColorMode = "CUSTOM",
         EnemyTextColor = RGB(255, 255, 255, 1),
         FriendlyTextColorMode = "CUSTOM",
@@ -1974,22 +1905,22 @@ ThreatPlates.DEFAULT_SETTINGS = {
       level = {
         typeface = Addon.DEFAULT_FONT, -- old default: "Accidental Presidency",
         size = 9, -- old default: 12,
-        width = 20,
+        width = 30,
         height = 10, -- old default: 14,
-        x = 49, -- old default: 50,
+        x = 44, -- old default: 50,
         y = 0,
         align = "RIGHT",
         vertical = "MIDDLE", -- old default: "TOP",
         shadow = true,
         flags = "",
-        show = false,
+        show = true,
       },
       eliteicon = {
         show = true,
         theme = "default",
-        scale = 16,
-        x = -58, -- old default: 64
-        y = 1, -- old default: 9
+        scale = 15,
+        x = 61, -- old default: 64
+        y = 7, -- old default: 9
         level = 22,
         anchor = "CENTER"
       },
@@ -2015,8 +1946,8 @@ ThreatPlates.DEFAULT_SETTINGS = {
       },
       spelltext = {
         typeface = Addon.DEFAULT_FONT, -- old default: "Accidental Presidency",
-        size = 11,  -- old default: 12
-        width = 110,
+        size = 8,  -- old default: 12
+        width = 120,
         height = 14,
         -- x = 0,       -- Removed in 9.2.0
         -- y = -15,     -- Removed in 9.2.0 -- old default: -13
@@ -2025,19 +1956,19 @@ ThreatPlates.DEFAULT_SETTINGS = {
         align = "LEFT",
         vertical = "MIDDLE",
         shadow = true,
-        flags = "OUTLINE",
+        flags = "",
         show = true,
       },
       raidicon = {
         scale = 20,
-        x = -62,
+        x = -78,
         y = 0, -- old default: 27
         x_hv = 0,
         y_hv = 25,
         anchor = "CENTER",
-        hpColor = false,
+        hpColor = true,
         show = true,
-        ShowInHeadlineView = true,
+        ShowInHeadlineView = false,
         hpMarked = {
           ["STAR"] = RGB_P(0.85, 0.81, 0.27),
           ["MOON"] = RGB_P(0.60, 0.75, 0.85),
@@ -2050,11 +1981,11 @@ ThreatPlates.DEFAULT_SETTINGS = {
         },
       },
       spellicon = {
-        scale = 30,
-        x = -70,
-        y = 5,
-        x_hv = -70,
-        y_hv = 5,
+        scale = 20,
+        x = 76,
+        y = -7,
+        x_hv = 75,
+        y_hv = -7,
         anchor = "CENTER",
         show = true,
       },
@@ -2066,8 +1997,8 @@ ThreatPlates.DEFAULT_SETTINGS = {
         show = true,
       },
       skullicon = {
-        scale = 12,
-        x = -69, -- old default: 55
+        scale = 16,
+        x = 51, -- old default: 55
         y = 0,
         anchor = "CENTER",
         show = true,
@@ -2113,14 +2044,14 @@ ThreatPlates.DEFAULT_SETTINGS = {
       ON = true,
       -- marked = false, -- not used at all, removed in 9.2.0
       -- nonCombat = true, -- removed in 9.1.3
-      UseThreatTable = false,
+      UseThreatTable = true,
       UseHeuristicInInstances = false,
       -- hideNonCombat = false, -- no longer used, removed in 9.1.3
       useType = true,
       useScale = true,
-      AdditiveScale = true,
+      AdditiveScale = false,
       useAlpha = true,
-      AdditiveAlpha = true,
+      AdditiveAlpha = false,
       useHPColor = true,
       art = {
         ON = true,
@@ -2144,9 +2075,9 @@ ThreatPlates.DEFAULT_SETTINGS = {
       },
       dps = {
         scale = {
-          LOW 		= -0.2,
-          MEDIUM		= -0.1,
-          HIGH 		= 0, -- old default: 1.25,
+          LOW 		= 0.8,
+          MEDIUM		= 0.9,
+          HIGH 		= 1.0, -- old default: 1.25,
         },
         alpha = {
           LOW 		= 1,
@@ -2156,16 +2087,16 @@ ThreatPlates.DEFAULT_SETTINGS = {
       },
       tank = {
         scale = {
-          LOW 		= 0, -- old default: 1.25,
-          MEDIUM		= -0.1,
-          HIGH 		= -0.2,
-          OFFTANK = -0.2
+          LOW 		= 1.0, -- old default: 1.25,
+          MEDIUM		= 0.9,
+          HIGH 		= 0.8,
+          OFFTANK = 0.8
         },
         alpha = {
           LOW 		= 1,
-          MEDIUM		= 1,
-          HIGH 		= 1,
-          OFFTANK = 1
+          MEDIUM		= 0.85,
+          HIGH 		= 0.75,
+          OFFTANK = 0.75
         },
       },
       marked = {
@@ -2185,8 +2116,8 @@ ThreatPlates.DEFAULT_SETTINGS = {
         ["TargetA"]  = false,   -- Target Alpha
         ["NonTargetA"]	= true, -- Non-Target Alpha
         ["NoTargetA"]  = false, -- No Target Alpha
-        ["TargetS"]  = true,   -- Target Scale
-        ["NonTargetS"]	= true, -- Non-Target Scale
+        ["TargetS"]  = false,   -- Target Scale
+        ["NonTargetS"]	= false, -- Non-Target Scale
         ["NoTargetS"]  = false, -- No Target Scale
         ["MarkedA"] = false,
         ["MarkedS"] = false,
@@ -2196,12 +2127,12 @@ ThreatPlates.DEFAULT_SETTINGS = {
         ["CastingEnemyUnitScale"] = false,
         ["MouseoverUnitAlpha"] = false,
         ["MouseoverUnitScale"] = false,
-        OccludedUnits        = true,
+        OccludedUnits        = false,
       },
       scale = {
         AbsoluteTargetScale  = false,
-        ["Target"]	  	     = 0.1,
-        ["NonTarget"]	       = -0.1,
+        ["Target"]	  	     = 0.3,
+        ["NonTarget"]	       = -0.3,
         ["NoTarget"]	       = 0,
         ["Totem"]		         = 0.75,
         ["Marked"] 		       = 1.3,
@@ -2243,7 +2174,7 @@ ThreatPlates.DEFAULT_SETTINGS = {
         ["Pet"]              = 0.8,
         ["Minus"]	           = 0.8,
         ["Tapped"]		       = 1,
-        OccludedUnits        = 0.2,
+        OccludedUnits        = 0,
       },
     },
     Transparency = {

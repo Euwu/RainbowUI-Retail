@@ -1099,7 +1099,7 @@ function DF:CreateCoolTip()
 					menuButton.leftText:SetFont(fontFace, fontSize, fontFlags)
 				end
 			else
-				menuButton.leftText:SetFont(gameCooltip.defaultFont, leftTextSettings[6] or gameCooltip.OptionsTable.TextSize or 14, leftTextSettings[8] or gameCooltip.OptionsTable.TextShadow)
+				menuButton.leftText:SetFont(gameCooltip.defaultFont, leftTextSettings[6] or gameCooltip.OptionsTable.TextSize or 10, leftTextSettings[8] or gameCooltip.OptionsTable.TextShadow)
 			end
 
 			--text shadow color
@@ -1196,7 +1196,7 @@ function DF:CreateCoolTip()
 					menuButton.rightText:SetFont(fontFace, fontSize, fontFlags)
 				end
 			else
-				menuButton.rightText:SetFont(gameCooltip.defaultFont, rightTextSettings[6] or gameCooltip.OptionsTable.TextSize or 14, rightTextSettings[8] or gameCooltip.OptionsTable.TextShadow)
+				menuButton.rightText:SetFont(gameCooltip.defaultFont, rightTextSettings[6] or gameCooltip.OptionsTable.TextSize or 10, rightTextSettings[8] or gameCooltip.OptionsTable.TextShadow)
 			end
 
 			--text shadow color
@@ -3895,7 +3895,7 @@ function DF:CreateCoolTip()
 		gameCooltip:SetOption("StatusBarTexture", [[Interface\WorldStateFrame\WORLDSTATEFINALSCORE-HIGHLIGHT]])
 		--self:SetOption("TextFont", DF.Language.GetFontForLanguageID(GetLocale()))
 		self:SetOption("TextColor", "orange")
-		self:SetOption("TextSize", 14)
+		self:SetOption("TextSize", 11)
 		self:SetOption("ButtonsYMod", -4)
 		self:SetOption("YSpacingMod", -4)
 		self:SetOption("IgnoreButtonAutoHeight", true)

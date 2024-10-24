@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 ## Interface: 11504, 30403, 40400, 110002, 110005
+=======
+## Interface: 11503, 11504, 40400, 40401, 110002, 110005
+>>>>>>> Stashed changes
 ## Title: Method Raid Tools
 ## Author: ykiigor
 ## Notes: Method Raid Tools
@@ -6,19 +10,17 @@
 ## Version: 5005
 ## AddonCompartmentFunc: MRT_MinimapClickFunction
 ## IconTexture: Interface\AddOns\MRT\media\MiniMap.tga
-
-## Title-zhTW: |cffFF7F00[團隊]|r MRT 團隊工具包
-## Notes-zhTW: Method Raid Tools |n|n提供出團時會用到的許多方便功能。像是團隊分析觀察、準備確認、檢查食物精煉、上光柱標記助手、團隊技能CD監控、團隊輔助工具和一些首領的戰鬥模組...等。|n|n|cffffd200使用方法：|r點小地圖按鈕。
-## X-Category-zhTW: 團隊
-## DefaultState: disabled
-
 core.lua
 Functions.lua
 embeds.xml
 ExLib.lua
+localization\localization.ru.lua
 localization\localization.en.lua
+localization\localization.de.lua
 localization\localization.cn.lua
 localization\localization.tw.lua
+localization\localization.kr.lua
+localization\localization.it.lua
 localization\localization.lua
 Data.lua
 BlizzFix.lua

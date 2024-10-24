@@ -481,7 +481,7 @@ function Addon:ConfigCastbar()
         castbar:_Hide()
       end
     else
-      Addon.Logging.Warning(ThreatPlates.L["Please select a target unit to enable configuration mode."])
+      Addon.Logging.Warning("Please select a target unit to enable configuration mode.")
     end
   else
     local castbar = ConfigModePlate.TPFrame.visual.castbar

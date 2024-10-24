@@ -6473,7 +6473,7 @@ local function CreateHealthbarOptions()
                 order = 1,
                 type = "select",
                 desc = L["Changes the default settings to the selected design. Some of your custom settings may get overwritten if you switch back and forth.."],
-                values = { CLASSIC = L["Classic"], SMOOTH = L["Smooth"] } ,
+                values = { CLASSIC = "Classic", SMOOTH = "Smooth" } ,
                 set = function(info, val)
                   Addon.db.global.DefaultsVersion = val
                   if val == "CLASSIC" then
@@ -6619,14 +6619,14 @@ local function CreateHealthbarOptions()
                   end
                   SetThemeValue(info, val)
                 end,
-                values = { TP_Border_Default = L["Default"], TP_Border_Thin = L["Thin"] },
+                values = { TP_Border_Default = "Default", TP_Border_Thin = "Thin" },
                 arg = { "settings", "healthborder", "texture" },
               },
               EliteBorder = {
                 type = "select",
                 order = 26,
                 name = L["Elite Border"],
-                values = { TP_EliteBorder_Default = L["Default"], TP_EliteBorder_Thin = L["Thin"] },
+                values = { TP_EliteBorder_Default = "Default", TP_EliteBorder_Thin = "Thin" },
                 set = SetThemeValue,
                 arg = { "settings", "elitehealthborder", "texture" }
               },
@@ -6813,7 +6813,7 @@ local function CreateHealthbarOptions()
               },
               Header = { name = L["Colors"], type = "header", order = 20, },
               ColorLow = {
-                name = L["Low Color"],
+                name = "Low Color",
                 order = 30,
                 type = "color",
                 desc = "",
@@ -6823,7 +6823,7 @@ local function CreateHealthbarOptions()
                 arg = { "aHPbarColor" },
               },
               ColorHigh = {
-                name = L["High Color"],
+                name = "High Color",
                 order = 40,
                 type = "color",
                 desc = "",
@@ -7199,7 +7199,7 @@ local function CreateCastbarOptions()
                 type = "select",
                 order = 25,
                 name = L["Border"],
-                values = { TP_Castbar_Border_Default = L["Default"], TP_Castbar_Border_Thin = L["Thin"] },
+                values = { TP_Castbar_Border_Default = "Default", TP_Castbar_Border_Thin = "Thin" },
                 set = function(info, val)
                   if val == "TP_Castbar_Border_Default" then
                     db.settings.castborder.EdgeSize = 2
@@ -9562,7 +9562,7 @@ local function CreateOptionsTable()
                     Enable = {
                       type = "toggle",
                       order = 10,
-                      name = L["Enable Fade-In"],
+                      name = "Enable Fade-In",
                       desc = L["This option allows you to control whether nameplates should fade in when displayed."],
                       width = "full",
                       arg = { "Transparency", "Fading" },
@@ -9836,16 +9836,16 @@ local function CreateOptionsTable()
                       type = "description",
                       width = "full",
                     },
-                    Header1 = { type = "header", order = 10, name = L["Friendly & Neutral Units"], },
+                    Header1 = { type = "header", order = 10, name = "Friendly & Neutral Units", },
                     FriendlyPlayers = GetScaleEntry(L["Friendly Players"], 11, { "nameplate", "scale", "FriendlyPlayer" }),
                     FriendlyNPCs = GetScaleEntry(L["Friendly NPCs"], 12, { "nameplate", "scale", "FriendlyNPC" }),
                     NeutralNPCs = GetScaleEntry(L["Neutral NPCs"], 13, { "nameplate", "scale", "Neutral" }),
-                    Header2 = { type = "header", order = 20, name = L["Enemy Units"], },
+                    Header2 = { type = "header", order = 20, name = "Enemy Units", },
                     EnemyPlayers = GetScaleEntry(L["Enemy Players"], 21, { "nameplate", "scale", "EnemyPlayer" }),
                     EnemyNPCs = GetScaleEntry(L["Enemy NPCs"], 22, { "nameplate", "scale", "EnemyNPC" }),
                     EnemyElite = GetScaleEntry(L["Rares & Elites"], 23, { "nameplate", "scale", "Elite" }),
                     EnemyBoss = GetScaleEntry(L["Bosses"], 24, { "nameplate", "scale", "Boss" }),
-                    Header3 = { type = "header", order = 30, name = L["Minions & By Status"], },
+                    Header3 = { type = "header", order = 30, name = "Minions & By Status", },
                     Guardians = GetScaleEntry(L["Guardians"], 31, { "nameplate", "scale", "Guardian" }),
                     Pets = GetScaleEntry(L["Pets"], 32, { "nameplate", "scale", "Pet" }),
                     Minus = GetScaleEntry(L["Minor"], 33, { "nameplate", "scale", "Minus" }),
@@ -10295,7 +10295,7 @@ local function CreateOptionsTable()
                       type = "select",
                       order = 10,
                       name = L["Icon Style"],
-                      values = { default = L["Default"], stddragon = L["Blizzard Dragon"], skullandcross = L["Skull and Crossbones"], lion = L["Lions"], wolf = L["Wolves"], necro = L["Necrolord"], fae = L["Night Fae"], venthyr = L["Venthyr"], kyrian = L["Kyrian"], alliance = L["Alliance"], horde = L["Horde"] },
+                      values = { default = "Default", stddragon = "Blizzard Dragon", skullandcross = "Skull and Crossbones", lion = "Lions", wolf = "Wolves", necro = "Necrolord", fae = "Night Fae", venthyr = "Venthyr", kyrian = "Kyrian", alliance = "Alliance", horde = "Horde" },
                       set = function(info, val)
                         SetThemeValue(info, val)
                         options.args.NameplateSettings.args.EliteIcon.args.Texture.args.PreviewRare.image = "Interface\\AddOns\\TidyPlates_ThreatPlates\\Widgets\\EliteArtWidget\\" .. val
@@ -10775,7 +10775,7 @@ local function CreateOptionsTable()
                             i.PrevMed.image = p .. db.threat.art.theme .. "\\" .. "MEDIUM"
                             i.PrevHigh.image = p .. db.threat.art.theme .. "\\" .. "LOW"
                           end,
-                          values = { default = L["Default"], bar = L["Bar Style"] },
+                          values = { default = "Default", bar = "Bar Style" },
                           arg = { "threat", "art", "theme" }
                         },
                       },
@@ -10932,7 +10932,7 @@ local function CreateOptionsTable()
             Header1 = {
               order = 3,
               type = "header",
-              name = L["Translators"],
+              name = "Translators",
             },
             Translators1 = {
               type = "description",
@@ -10956,12 +10956,12 @@ local function CreateOptionsTable()
 							type = "description",
 							order = 11,
 							width = "full",
-							name = "繁體中文: 彩虹ui"
+							name = "zhTW: gaspy10 (CurseForge)"
 						},
             ArtworktHeader = {
               order = 40,
               type = "header",
-              name = L["Artwork"],
+              name = "Artwork",
             },
             Artwork1 = {
               type = "description",
@@ -11060,6 +11060,7 @@ local function CreateOptionsTable()
 --               width = "full",
 --               name = "Upscaled class icons: Simaia (Twitter: @keyboardturn)",
 --             },
+
         },
       },
     }
@@ -11069,7 +11070,7 @@ local function CreateOptionsTable()
   sort(class_list)
   local ClassOpts = {
     Style = {
-      name = L["Style"],
+      name = "Style",
       order = -1,
       type = "select",
       width = "full",
@@ -11093,7 +11094,7 @@ local function CreateOptionsTable()
   };
   for i, class in ipairs(class_list) do
     ClassOpts["Prev" .. i] = {
-      name = L[class],
+      name = class,
       type = "execute",
       order = i,
       image = "Interface\\AddOns\\TidyPlates_ThreatPlates\\Widgets\\ClassIconWidget\\" .. db.classWidget.theme .. "\\" .. class,
