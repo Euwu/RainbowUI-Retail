@@ -1,5 +1,5 @@
-local VERSION_TEXT = "v0.4.8";
-local VERSION_DATE = 1729900000;
+local VERSION_TEXT = "v0.5.0";
+local VERSION_DATE = 1730300000;
 
 
 local addonName, addon = ...
@@ -16,8 +16,11 @@ local DefaultValues = {
     Theme = 1,
     FrameSize = 2,
     FontSizeBase = 3, -- 更改預設值
+    FontText = "default",
+    FontNumber = "default",
     FrameOrientation = 2,                       --1:Left  2:Right(Default)
     HideUI = true,
+        HideOutlineSparkles = true,
         HideUnitNames = false,
     ShowCopyTextButton = false,
     ShowNPCNameOnPage = false,
